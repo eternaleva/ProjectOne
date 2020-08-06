@@ -30,6 +30,27 @@ public class Servlet_Admin extends HttpServlet
 	//创建一个Service对象，用作业务逻辑处理
 	private AdminService adminService = new AdminServiceImp1();
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		//获取所有管理员用户信息
+		//获取URI，然后分发逻辑
+		String requestURI = request.getRequestURI();
+		String action = requestURI.replace("/api/admin/admin/", "");
+		if("allAdmins".equals(action))
+		{
+			//分发给getAllAdmins处理
+			getAllAdmins(request, response);
+		}
+		else if("deleteAdmins".equals(action))
+		{
+			deleteAdmin(request, response);
+		}
+		else if("getAdminsInfo".equals(action))
+		{
+			getAdminInfo(request, response);
+		}
+	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		//做Post分发处理
@@ -40,13 +61,59 @@ public class Servlet_Admin extends HttpServlet
 		//分发到login方法
 		if("login".equals(action))
 		{
-			 login(request, response);
+			login(request, response);
 		}
 		else if("addAdminss".equals(action))
 		{
 			addAdmin(request, response);
 		}
+		else if("updateAdminss".equals(action))
+		{
+			alterAdminInfo(request, response);
+		}
 	}
+
+	private void getAdminInfo(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String id = request.getParameter("id");
+		AdminInfo adminfo = adminService.getAdminInfo(id);
+		if("".equals(adminfo.getId()))
+		{
+			response.getWriter().println(Result.error("访问失败"));
+		}
+		else
+			response.getWriter().println(Result.ok(adminfo));
+	}
+
+	private void alterAdminInfo(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String requesetBody = HttpUtils.requestBodyToString(request);
+		AdminInfo adminInfo = gson.fromJson(requesetBody, AdminInfo.class);
+		int alterResult = adminService.alterAdminInfo(adminInfo);
+		if(alterResult == 0)
+		{
+			response.getWriter().println(Result.ok("修改成功"));
+		}
+		else
+			response.getWriter().println(Result.error("修改失败"));
+
+	}
+
+	private void deleteAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		//获取要删除的id
+		String id = request.getParameter("id");
+		//交给service处理
+		int deleteResult = adminService.deleteAdmin(id);
+		if(deleteResult == 0)
+		{
+			response.getWriter().println(Result.ok("删除成功"));
+		}
+		else
+			response.getWriter().println(Result.error("删除失败，请刷新重试"));
+	}
+
+
 
 	/**
 	 * 添加管理员
@@ -101,20 +168,6 @@ public class Servlet_Admin extends HttpServlet
 
 			response.getWriter().println(Result.error("用户名密码不正确"));
 		}
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		//获取所有管理员用户信息
-		//获取URI，然后分发逻辑
-		String requestURI = request.getRequestURI();
-		String action = requestURI.replace("/api/admin/admin/", "");
-		if("allAdmins".equals(action))
-		{
-			//分发给getAllAdmins处理
-			getAllAdmins(request, response);
-		}
-
 	}
 
 	private void getAllAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException

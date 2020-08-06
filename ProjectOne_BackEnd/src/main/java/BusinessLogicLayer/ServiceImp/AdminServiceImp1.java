@@ -34,4 +34,22 @@ public class AdminServiceImp1 implements AdminService
 	{
 		return adminDao.addAdmin(adminInfo);
 	}
+
+	@Override
+	public int deleteAdmin(String id)
+	{
+		return adminDao.deleteAdmin(id);
+	}
+
+	@Override
+	public int alterAdminInfo(AdminInfo adminInfo)
+	{
+		return adminDao.alterAdminInfo(adminInfo);
+	}
+
+	@Override
+	public AdminInfo getAdminInfo(String id)
+	{
+		return adminDao.getAdminInfo(id);
+	}
 }

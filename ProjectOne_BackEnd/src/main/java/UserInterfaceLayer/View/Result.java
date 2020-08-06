@@ -42,7 +42,7 @@ public class Result
 
 	public static String ok(Object data)
 	{
-		return new Gson().toJson(new Result(0, data, "登陆成功"));
+		return new Gson().toJson(new Result(0, data, null));
 	}
 
 	public static String error(String message)

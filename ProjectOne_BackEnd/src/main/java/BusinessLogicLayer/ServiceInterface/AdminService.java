@@ -17,4 +17,10 @@ public interface AdminService
 	List<AdminInfo> getAllAdmins();
 
 	int addAdmin(AdminInfo adminInfo);
+
+	int deleteAdmin(String id);
+
+	int alterAdminInfo(AdminInfo adminInfo);
+
+	AdminInfo getAdminInfo(String id);
 }
