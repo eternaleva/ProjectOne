@@ -1,4 +1,4 @@
-package filter;
+package UserInterfaceLayer.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -25,14 +25,14 @@ public class Filter_Option implements Filter
 		request.setCharacterEncoding("utf-8");
 		//因为后台主要提供数据，传递的是参数数据，所以最好提供utf-8类型，设置ContentType容易出一些问题
 		response.setCharacterEncoding("utf-8");
-
+		chain.doFilter(request, response);
 		//跨域设置
-		response.setHeader("Access-Control-Allow-Origin","http://localhost:8085");
+		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS,PUT,DELETE");
 		response.setHeader("Access-Control-Allow-Headers","x-requested-with,Authorization,Content-Type");
 		response.setHeader("Access-Control-Allow-Credentials","true");
 
-		chain.doFilter(request, response);
+
 
 	}
 
