@@ -71,6 +71,24 @@ public class Servlet_Admin extends HttpServlet
 		{
 			alterAdminInfo(request, response);
 		}
+		else if("getSearchAdmins".equals(action))
+		{
+			getSearchAdmins(request, response);
+		}
+	}
+
+	private void getSearchAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String requestBody = HttpUtils.requestBodyToString(request);
+		AdminInfo adminInfo = gson.fromJson(requestBody, AdminInfo.class);
+		//如果数据为空，则不搜索，显示全部对象
+		if("".equals(adminInfo.getEmail()) && "".equals(adminInfo.getNickname()))
+		{
+			getAllAdmins(request, response);
+			return;
+		}
+		List<AdminInfo> adminUsers = adminService.getSearchAdmins(adminInfo);
+		response.getWriter().println(Result.ok(adminUsers));
 	}
 
 	private void getAdminInfo(HttpServletRequest request, HttpServletResponse response) throws IOException

@@ -8,6 +8,7 @@ import BusinessLogicLayer.Utils.DruidUtils;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.apache.commons.lang3.StringUtils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -118,8 +119,41 @@ public class AdminUserDao implements AdminDao
 		} catch (SQLException throwables)
 		{
 			throwables.printStackTrace();
-			return adminInfo;
 		}
 		return adminInfo;
+	}
+
+	@Override
+	public List<AdminInfo> getSearchAdmins(AdminInfo adminInfo)
+	{
+		List<AdminInfo> adminUsers = new ArrayList<>();
+		try
+		{
+			//sql拼接
+			//只输入email
+			//只输入nickName
+			//两个都输入
+			String baseSql = "select * from admin_users where 1 = 1 ";
+			//list用来存放参数
+			List<Object> list = new ArrayList<>();
+			if(!StringUtils.isEmpty(adminInfo.getEmail()))
+			{
+				baseSql += "and email like ?";
+				//% % sql语句，模糊搜索，要用like
+				list.add("%"+ adminInfo.getEmail() + "%");
+			}
+			if(!StringUtils.isEmpty(adminInfo.getNickname()))
+			{
+				baseSql += "and nickname like ?";
+				list.add("%"+ adminInfo.getNickname() + "%");
+			}
+			adminUsers = runner.query(baseSql,
+					new BeanListHandler<AdminInfo>(AdminInfo.class),
+					list.toArray());
+		} catch (SQLException throwables)
+		{
+			throwables.printStackTrace();
+		}
+		return adminUsers;
 	}
 }

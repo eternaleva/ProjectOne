@@ -23,4 +23,6 @@ public interface AdminDao
 	int alterAdminInfo(AdminInfo adminInfo);
 
 	AdminInfo getAdminInfo(String id);
+
+	List<AdminInfo> getSearchAdmins(AdminInfo adminInfo);
 }

@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class AdminServiceImp1 implements AdminService
 {
+	//一个实现AdminDao接口的成员类，负责调用AdminDao的方法
 	private AdminDao adminDao = new AdminUserDao();
 
 	public int login(AdminBo adminBo)
@@ -51,5 +52,11 @@ public class AdminServiceImp1 implements AdminService
 	public AdminInfo getAdminInfo(String id)
 	{
 		return adminDao.getAdminInfo(id);
+	}
+
+	@Override
+	public List<AdminInfo> getSearchAdmins(AdminInfo adminInfo)
+	{
+		return adminDao.getSearchAdmins(adminInfo);
 	}
 }
