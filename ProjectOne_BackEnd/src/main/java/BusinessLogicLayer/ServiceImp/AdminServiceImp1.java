@@ -2,10 +2,10 @@ package BusinessLogicLayer.ServiceImp;
 
 import BusinessLogicLayer.ServiceInterface.AdminService;
 import DataAccessLayer.Bean.Bo.AdminBo;
+import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
 import DataAccessLayer.Bean.Vo.AdminInfo;
 import DataAccessLayer.DaoInterface.AdminDao;
 import DataAccessLayer.DaoImp.AdminUserDao;
-
 import java.util.List;
 
 /**
@@ -58,5 +58,11 @@ public class AdminServiceImp1 implements AdminService
 	public List<AdminInfo> getSearchAdmins(AdminInfo adminInfo)
 	{
 		return adminDao.getSearchAdmins(adminInfo);
+	}
+
+	@Override
+	public int changePwd(AdminChangePwdBo adminChangePwdBo)
+	{
+		return adminDao.changePwd(adminChangePwdBo);
 	}
 }

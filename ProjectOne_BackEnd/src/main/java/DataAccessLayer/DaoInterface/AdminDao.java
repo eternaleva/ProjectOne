@@ -1,6 +1,7 @@
 package DataAccessLayer.DaoInterface;
 
 import DataAccessLayer.Bean.Bo.AdminBo;
+import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
 import DataAccessLayer.Bean.Vo.AdminInfo;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface AdminDao
 	AdminInfo getAdminInfo(String id);
 
 	List<AdminInfo> getSearchAdmins(AdminInfo adminInfo);
+
+	int changePwd(AdminChangePwdBo adminChangePwdBo);
 }

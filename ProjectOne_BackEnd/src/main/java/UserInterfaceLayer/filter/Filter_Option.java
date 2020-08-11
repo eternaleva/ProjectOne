@@ -25,7 +25,6 @@ public class Filter_Option implements Filter
 		request.setCharacterEncoding("utf-8");
 		//因为后台主要提供数据，传递的是参数数据，所以最好提供utf-8类型，设置ContentType容易出一些问题
 		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
 		chain.doFilter(request, response);
 		//跨域设置
 		response.setHeader("Access-Control-Allow-Origin","*");

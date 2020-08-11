@@ -1,5 +1,6 @@
 package DataAccessLayer.DaoImp;
 
+import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
 import DataAccessLayer.Bean.Vo.AdminInfo;
 import DataAccessLayer.DaoInterface.AdminDao;
 import DataAccessLayer.Bean.Bo.AdminBo;
@@ -155,5 +156,28 @@ public class AdminUserDao implements AdminDao
 			throwables.printStackTrace();
 		}
 		return adminUsers;
+	}
+
+	/**
+	 * code: -2(用户名不存在); -1(更改失败); 0(更改成功)
+	 * @param adminChangePwdBo
+	 * @return
+	 */
+	@Override
+	public int changePwd(AdminChangePwdBo adminChangePwdBo)
+	{
+		try
+		{	long num = runner.query("select count(id) from admin_users where email = ?", new ScalarHandler<>(), adminChangePwdBo.getAdminToken());
+			if(num == 0)
+				return -2;
+			runner.update("update admin_users set pwd = ? where email = ?",
+					adminChangePwdBo.getNewPwd(),
+					adminChangePwdBo.getAdminToken());
+		} catch (SQLException throwables)
+		{
+			throwables.printStackTrace();
+			return -1;
+		}
+		return 0;
 	}
 }

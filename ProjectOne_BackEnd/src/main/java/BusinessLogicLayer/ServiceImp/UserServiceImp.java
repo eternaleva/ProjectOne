@@ -4,9 +4,6 @@ import BusinessLogicLayer.ServiceInterface.UserService;
 import DataAccessLayer.Bean.Vo.UserVo;
 import DataAccessLayer.DaoImp.UserDaoImp;
 import DataAccessLayer.DaoInterface.UserDao;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**

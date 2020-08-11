@@ -4,6 +4,7 @@ import BusinessLogicLayer.Utils.HttpUtils;
 import DataAccessLayer.Bean.Bo.AdminBo;
 import BusinessLogicLayer.ServiceInterface.AdminService;
 import BusinessLogicLayer.ServiceImp.AdminServiceImp1;
+import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
 import DataAccessLayer.Bean.Vo.AdminInfo;
 import DataAccessLayer.Bean.Vo.AdminVo;
 import UserInterfaceLayer.View.Result;
@@ -74,6 +75,10 @@ public class Servlet_Admin extends HttpServlet
 		else if("getSearchAdmins".equals(action))
 		{
 			getSearchAdmins(request, response);
+		}
+		else if("changePwd".equals(action))
+		{
+			changePwd(request, response);
 		}
 	}
 
@@ -194,5 +199,38 @@ public class Servlet_Admin extends HttpServlet
 		List<AdminInfo> allAdmins = adminService.getAllAdmins();
 		//因为，还要返回code值，所以要调用Result的静态方法
 		response.getWriter().println(Result.ok(allAdmins));
+	}
+
+	private void changePwd(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String requestBody = HttpUtils.requestBodyToString(request);
+		AdminChangePwdBo adminChangePwdBo = gson.fromJson(requestBody, AdminChangePwdBo.class);
+		if(adminChangePwdBo.getAdminToken().isEmpty())
+		{
+			response.getWriter().println(Result.error("用户名错误"));
+			return;
+		}
+		else if(adminChangePwdBo.getOldPwd().isEmpty() || adminChangePwdBo.getNewPwd().isEmpty() || adminChangePwdBo.getConfirmPwd().isEmpty())
+		{
+			response.getWriter().println(Result.error("输入不能为空"));
+			return;
+		}
+
+		int changeResult = adminService.changePwd(adminChangePwdBo);
+		if(changeResult == 0)
+		{
+			response.getWriter().println(Result.ok("修改成功"));
+			return;
+		}
+		else if(changeResult == -1)
+		{
+			response.getWriter().println(Result.error("修改失败"));
+			return;
+		}
+		else if(changeResult == -2)
+		{
+			response.getWriter().println(Result.error("用户名不存在"));
+			return;
+		}
 	}
 }

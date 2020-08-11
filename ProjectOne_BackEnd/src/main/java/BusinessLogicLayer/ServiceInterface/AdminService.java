@@ -1,8 +1,11 @@
 package BusinessLogicLayer.ServiceInterface;
 
 import DataAccessLayer.Bean.Bo.AdminBo;
+import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
 import DataAccessLayer.Bean.Vo.AdminInfo;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -25,4 +28,6 @@ public interface AdminService
 	AdminInfo getAdminInfo(String id);
 
 	List<AdminInfo> getSearchAdmins(AdminInfo adminInfo);
+
+	int changePwd(AdminChangePwdBo adminChangePwdBo);
 }
