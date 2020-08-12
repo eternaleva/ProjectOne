@@ -3,7 +3,7 @@ import store from '../store'
 import * as types from '../store/mutation-types'
 import router from '../router/admin'
 
- //axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 // axios 配置
 axios.defaults.timeout = 600000;
 //axios.defaults.baseURL = 'http://115.29.141.32:8084';
