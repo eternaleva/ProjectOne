@@ -1,10 +1,7 @@
 package BusinessLogicLayer.ServiceInterface;
 
-import DataAccessLayer.Bean.Vo.AdminVo;
-import DataAccessLayer.Bean.Vo.UserVo;
+import DataAccessLayer.Bean.Vo.User.UserVo;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**

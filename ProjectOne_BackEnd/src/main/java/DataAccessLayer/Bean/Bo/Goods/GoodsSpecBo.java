@@ -1,18 +1,29 @@
-package DataAccessLayer.Bean.Bo.AddGoods;
+package DataAccessLayer.Bean.Bo.Goods;
 
 /**
- * Post请求体的json中的List的单个规格集
  * @auther tian
- * @date 2020/8/10 7:53 上午
+ * @date 2020/8/11 3:22 下午
  * @JDK_version JDK1.8
  */
-public class GoodsSpecificationBo
+public class GoodsSpecBo
 {
+	private Integer goodsId;
+
 	private String specName;
 
 	private Integer stockNum;
 
 	private Double unitPrice;
+
+	public Integer getGoodsId()
+	{
+		return goodsId;
+	}
+
+	public void setGoodsId(Integer goodsId)
+	{
+		this.goodsId = goodsId;
+	}
 
 	public String getSpecName()
 	{
@@ -42,15 +53,5 @@ public class GoodsSpecificationBo
 	public void setUnitPrice(Double unitPrice)
 	{
 		this.unitPrice = unitPrice;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "{" +
-				"specName='" + specName + '\'' +
-				", stockNum=" + stockNum +
-				", unitPrice=" + unitPrice +
-				'}';
 	}
 }

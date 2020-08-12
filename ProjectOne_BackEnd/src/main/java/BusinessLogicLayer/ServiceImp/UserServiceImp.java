@@ -1,7 +1,7 @@
 package BusinessLogicLayer.ServiceImp;
 
 import BusinessLogicLayer.ServiceInterface.UserService;
-import DataAccessLayer.Bean.Vo.UserVo;
+import DataAccessLayer.Bean.Vo.User.UserVo;
 import DataAccessLayer.DaoImp.UserDaoImp;
 import DataAccessLayer.DaoInterface.UserDao;
 import java.util.List;

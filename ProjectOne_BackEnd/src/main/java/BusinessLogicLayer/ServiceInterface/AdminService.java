@@ -1,11 +1,10 @@
 package BusinessLogicLayer.ServiceInterface;
 
-import DataAccessLayer.Bean.Bo.AdminBo;
-import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
-import DataAccessLayer.Bean.Vo.AdminInfo;
+import DataAccessLayer.Bean.Bo.Admin.AdminBo;
+import DataAccessLayer.Bean.Bo.Admin.AdminChangePwdBo;
+import DataAccessLayer.Bean.Bo.Admin.TokenBo;
+import DataAccessLayer.Bean.Vo.Admin.AdminInfo;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**

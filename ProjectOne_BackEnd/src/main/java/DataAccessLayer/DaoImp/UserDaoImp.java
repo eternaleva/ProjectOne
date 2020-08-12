@@ -1,7 +1,7 @@
 package DataAccessLayer.DaoImp;
 
 import BusinessLogicLayer.Utils.DruidUtils;
-import DataAccessLayer.Bean.Vo.UserVo;
+import DataAccessLayer.Bean.Vo.User.UserVo;
 import DataAccessLayer.DaoInterface.UserDao;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;

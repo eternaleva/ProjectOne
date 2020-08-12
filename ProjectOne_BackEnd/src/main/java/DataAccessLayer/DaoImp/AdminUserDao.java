@@ -1,9 +1,9 @@
 package DataAccessLayer.DaoImp;
 
-import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
-import DataAccessLayer.Bean.Vo.AdminInfo;
+import DataAccessLayer.Bean.Bo.Admin.AdminChangePwdBo;
+import DataAccessLayer.Bean.Vo.Admin.AdminInfo;
 import DataAccessLayer.DaoInterface.AdminDao;
-import DataAccessLayer.Bean.Bo.AdminBo;
+import DataAccessLayer.Bean.Bo.Admin.AdminBo;
 import org.apache.commons.dbutils.QueryRunner;
 import BusinessLogicLayer.Utils.DruidUtils;
 import org.apache.commons.dbutils.handlers.BeanHandler;

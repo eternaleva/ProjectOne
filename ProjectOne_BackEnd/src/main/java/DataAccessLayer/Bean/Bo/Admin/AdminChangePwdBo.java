@@ -1,4 +1,4 @@
-package DataAccessLayer.Bean.Bo;
+package DataAccessLayer.Bean.Bo.Admin;
 
 /**
  * @auther tian

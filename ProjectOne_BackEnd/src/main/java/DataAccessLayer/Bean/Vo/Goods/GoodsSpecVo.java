@@ -1,4 +1,4 @@
-package DataAccessLayer.Bean.Vo;/**
+package DataAccessLayer.Bean.Vo.Goods;/**
  *  商品规格表，是商品表的子类
  *  主要为了获取商品规格信息的时候不用重复计算，直接到该表中获取
  *  @auther tian
@@ -9,13 +9,13 @@ package DataAccessLayer.Bean.Vo;/**
 {
 	private Integer id;
 
-	private Integer goodsId;
-
 	private String specName;
 
-	private Integer StockNum;
+	private Integer stockNum;
 
 	private Double unitPrice;
+
+	private Integer goodsId;
 
 	public Integer getId()
 	{
@@ -25,16 +25,6 @@ package DataAccessLayer.Bean.Vo;/**
 	public void setId(Integer id)
 	{
 		this.id = id;
-	}
-
-	public Integer getGoodsId()
-	{
-		return goodsId;
-	}
-
-	public void setGoodId(Integer goodsId)
-	{
-		this.goodsId = goodsId;
 	}
 
 	public String getSpecName()
@@ -49,12 +39,12 @@ package DataAccessLayer.Bean.Vo;/**
 
 	public Integer getStockNum()
 	{
-		return StockNum;
+		return stockNum;
 	}
 
 	public void setStockNum(Integer stockNum)
 	{
-		StockNum = stockNum;
+		this.stockNum = stockNum;
 	}
 
 	public Double getUnitPrice()
@@ -67,6 +57,16 @@ package DataAccessLayer.Bean.Vo;/**
 		this.unitPrice = unitPrice;
 	}
 
+	public Integer getGoodsId()
+	{
+		return goodsId;
+	}
+
+	public void setGoodsId(Integer goodsId)
+	{
+		this.goodsId = goodsId;
+	}
+
 	public GoodsSpecVo()
 	{
 
@@ -77,7 +77,19 @@ package DataAccessLayer.Bean.Vo;/**
 		this.id = id;
 		this.goodsId = goodsId;
 		this.specName = specName;
-		StockNum = stockNum;
+		this.stockNum = stockNum;
 		this.unitPrice = unitPrice;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "{" +
+				"id=" + id +
+				", goodsId=" + goodsId +
+				", specName='" + specName + '\'' +
+				", StockNum=" + stockNum +
+				", unitPrice=" + unitPrice +
+				'}';
 	}
 }

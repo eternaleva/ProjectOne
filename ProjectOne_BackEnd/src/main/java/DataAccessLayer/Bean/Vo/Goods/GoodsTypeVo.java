@@ -1,4 +1,4 @@
-package DataAccessLayer.Bean.Vo;
+package DataAccessLayer.Bean.Vo.Goods;
 
 /**
  * 商品大类表

@@ -1,4 +1,4 @@
-package DataAccessLayer.Bean.Vo;
+package DataAccessLayer.Bean.Vo.Goods;
 
 /**
  * 商品表，一些数据需要从商品规格表中拿
@@ -8,6 +8,7 @@ package DataAccessLayer.Bean.Vo;
  */
 public class GoodsVo
 {
+	//这个id是数据库的对应ID
 	private Integer id;
 
 	private Integer typeId;
@@ -85,6 +86,11 @@ public class GoodsVo
 	public String getDesc()
 	{
 		return desc;
+	}
+
+	public void setDesc(String desc)
+	{
+		this.desc = desc;
 	}
 
 	@Override

@@ -1,8 +1,8 @@
-package UserInterfaceLayer.Controller;
+package UserInterfaceLayer.Controller.Admin;
 
 import BusinessLogicLayer.ServiceImp.UserServiceImp;
 import BusinessLogicLayer.ServiceInterface.UserService;
-import DataAccessLayer.Bean.Vo.UserVo;
+import DataAccessLayer.Bean.Vo.User.UserVo;
 import UserInterfaceLayer.View.Result;
 import com.google.gson.Gson;
 

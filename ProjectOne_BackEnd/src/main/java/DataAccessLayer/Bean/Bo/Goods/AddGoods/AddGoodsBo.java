@@ -1,4 +1,4 @@
-package DataAccessLayer.Bean.Bo.AddGoods;
+package DataAccessLayer.Bean.Bo.Goods.AddGoods;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class AddGoodsBo
 
 	private String desc;
 
-	private List<GoodsSpecificationBo> specList;
+	private List<AddGoodsSpecBo> specList;
 
 	public String getName()
 	{
@@ -60,12 +60,12 @@ public class AddGoodsBo
 		this.desc = desc;
 	}
 
-	public List<GoodsSpecificationBo> getSpecList()
+	public List<AddGoodsSpecBo> getSpecList()
 	{
 		return specList;
 	}
 
-	public void setSpecList(List<GoodsSpecificationBo> specList)
+	public void setSpecList(List<AddGoodsSpecBo> specList)
 	{
 		this.specList = specList;
 	}

@@ -1,9 +1,10 @@
 package BusinessLogicLayer.ServiceImp;
 
 import BusinessLogicLayer.ServiceInterface.AdminService;
-import DataAccessLayer.Bean.Bo.AdminBo;
-import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
-import DataAccessLayer.Bean.Vo.AdminInfo;
+import DataAccessLayer.Bean.Bo.Admin.AdminBo;
+import DataAccessLayer.Bean.Bo.Admin.AdminChangePwdBo;
+import DataAccessLayer.Bean.Bo.Admin.TokenBo;
+import DataAccessLayer.Bean.Vo.Admin.AdminInfo;
 import DataAccessLayer.DaoInterface.AdminDao;
 import DataAccessLayer.DaoImp.AdminUserDao;
 import java.util.List;

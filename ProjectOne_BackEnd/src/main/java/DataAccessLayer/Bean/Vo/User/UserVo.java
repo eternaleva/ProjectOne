@@ -1,4 +1,4 @@
-package DataAccessLayer.Bean.Vo;
+package DataAccessLayer.Bean.Vo.User;
 
 /**
  * @auther tian

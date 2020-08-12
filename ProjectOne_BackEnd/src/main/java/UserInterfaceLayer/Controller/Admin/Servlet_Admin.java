@@ -1,12 +1,13 @@
-package UserInterfaceLayer.Controller;
+package UserInterfaceLayer.Controller.Admin;
 
 import BusinessLogicLayer.Utils.HttpUtils;
-import DataAccessLayer.Bean.Bo.AdminBo;
+import DataAccessLayer.Bean.Bo.Admin.AdminBo;
 import BusinessLogicLayer.ServiceInterface.AdminService;
 import BusinessLogicLayer.ServiceImp.AdminServiceImp1;
-import DataAccessLayer.Bean.Bo.AdminChangePwdBo;
-import DataAccessLayer.Bean.Vo.AdminInfo;
-import DataAccessLayer.Bean.Vo.AdminVo;
+import DataAccessLayer.Bean.Bo.Admin.AdminChangePwdBo;
+import DataAccessLayer.Bean.Bo.Admin.TokenBo;
+import DataAccessLayer.Bean.Vo.Admin.AdminInfo;
+import DataAccessLayer.Bean.Vo.Admin.AdminVo;
 import UserInterfaceLayer.View.Result;
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
@@ -80,6 +81,18 @@ public class Servlet_Admin extends HttpServlet
 		{
 			changePwd(request, response);
 		}
+		else if("logoutAdmin".equals(action))
+		{
+			logoutAdmin(request, response);
+		}
+	}
+
+	private void logoutAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String requestBody = HttpUtils.requestBodyToString(request);
+		TokenBo tokenBo = gson.fromJson(requestBody, TokenBo.class);
+		request.getSession().setAttribute("user", null);
+		response.getWriter().println(Result.ok("注销成功"));
 	}
 
 	private void getSearchAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException
@@ -184,6 +197,7 @@ public class Servlet_Admin extends HttpServlet
 		//如果登陆成功（loginResult==0），调用view层逻辑，返回data数据
 		if(loginResult == 0)
 		{
+			request.getSession().setAttribute("user", adminBo.getEmail());
 			response.getWriter().println(Result.ok(new AdminVo(adminBo.getEmail(), adminBo.getEmail())));
 		}
 		else
